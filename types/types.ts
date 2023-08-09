@@ -1,4 +1,8 @@
-import { ServerActionDispatcher } from "next/dist/client/components/router-reducer/router-reducer-types"
+export interface IUserWallet {
+    asset_id: string,
+    wallet_address: string,
+    balance: number
+}
 
 export interface IAuthTokens {
     readonly access: string,

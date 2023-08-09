@@ -1,6 +1,8 @@
 "use client"
 
+import WalletCard from "@/components/common/walletCard";
 import { useUserContext } from "@/contexts/userContext";
+import { IUserWallet } from "@/types/types";
 import { USER_WALLETS } from "@/utils/urls";
 import axios from "axios";
 import { redirect } from "next/navigation";
@@ -32,17 +34,17 @@ const Wallets = () => {
         
     }, [])
 
-    const walletsToRender = myWallets.map( (wallet) => {
+    const walletsToRender = myWallets.map( (wallet: IUserWallet) => {
         return (
             //@ts-ignore
-            <h3>{wallet.wallet_address}</h3>
+            <WalletCard key={wallet.wallet_address} wallet={wallet}/>
         )
     })
     
     return(
-        <>
+        <div className="flex flex-row justify-center">
            { walletsToRender }
-        </>
+        </div>
      
     )
 }

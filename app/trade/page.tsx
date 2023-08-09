@@ -1,10 +1,17 @@
 "use client"
 
+import MyModal from "@/components/common/modal";
 import { useUserContext } from "@/contexts/userContext";
-import { redirect } from "next/navigation";
+import { IUserWallet } from "@/types/types";
+
 
 const Trade = () => {
 
+    const walletExample: IUserWallet = {
+        asset_id: "BTC",
+        balance: 4.6,
+        wallet_address: "1231qweqwewqe"
+    }
     const userContext = useUserContext();
 
     if (!userContext?.user) {
@@ -12,7 +19,9 @@ const Trade = () => {
     }
 
     return(
-        <h1>Trade Page</h1>
+        
+        <MyModal wallet={walletExample}/>
+        
     )
 }
 
